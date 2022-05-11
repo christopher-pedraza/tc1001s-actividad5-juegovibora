@@ -8,7 +8,7 @@ Exercises
 4. Change the snake to respond to mouse clicks.
 """
 
-from random import randrange
+from random import *
 from turtle import *
 
 from freegames import square, vector
@@ -41,6 +41,21 @@ def move():
 
     snake.append(head)
 
+    if randint(0, 100) < 10:
+        if randint(0, 10) < 5:
+            if (food.x + 10) < 180 and (food.x + 10) > -190:
+                food.x += 10
+        else:
+            if (food.x - 10) < 180 and (food.x - 10) > -190:
+                food.x -= 10
+    if randint(0, 100) < 10:
+        if randint(0, 10) < 5:
+            if (food.y - 10) < 170 and (food.y - 10) > -190:
+                food.y += 10
+        else:
+            if (food.y - 10) < 170 and (food.y - 10) > -190:
+                food.y -= 10
+
     if head == food:
         print('Snake:', len(snake))
         food.x = randrange(-15, 15) * 10
@@ -56,7 +71,6 @@ def move():
     square(food.x, food.y, 9, 'green')
     update()
     ontimer(move, 100)
-
 
 setup(420, 420, 370, 0)
 hideturtle()
